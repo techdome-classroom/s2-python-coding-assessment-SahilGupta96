@@ -52,6 +52,6 @@ class TestRomanToInt(unittest.TestCase):
         # Remove this test if we assume input will always be valid as per constraints  
         self.assertEqual(self.solution.romanToInt(""), 0)  
 
-if _name_ == '_main_':  
+if __name__ == '_main_':  
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
 
