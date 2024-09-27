@@ -1,19 +1,17 @@
-class Solution:
-    def isValid(self, s: str) -> bool:
-        
-        bracket_map = {')': '(', '}': '{', ']': '['}
-    
+class Solution(object):
+    def isValid(self, s):
         stack = []
-        
-        for char in s:
-            if char in bracket_map.values(): 
-                stack.append(char)
-            elif char in bracket_map: 
-                if stack and stack[-1] == bracket_map[char]:
-                    stack.pop() 
-                else:
+        for c in s: 
+            if c in '([{': 
+                stack.append(c) 
+            else: 
+                if not stack or \
+                    (c == ')' and stack[-1] != '(') or \
+                    (c == '}' and stack[-1] != '{') or \
+                    (c == ']' and stack[-1] != '['):
                     return False 
-        return not stack  
+                stack.pop() 
+        return not stack
     
 import unittest
 
