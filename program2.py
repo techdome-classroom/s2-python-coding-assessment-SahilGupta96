@@ -1,5 +1,6 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
+        
         roman_map = {
             'I': 1,
             'V': 5,
@@ -7,27 +8,27 @@ class Solution:
             'L': 50,
             'C': 100,
             'D': 500,
-            'M': 1000
+            'M': 1000 
         }
-
+        
         total = 0
-        prev_value = 0  # Store the value of the previous character
-
-        for char in s:
-            current_value = roman_map[char]
-
-            if current_value > prev_value:
-                total -= prev_value  # Subtract the previous value if it's smaller
+        n = len(s)
+        
+        for i in range(n):
+            
+            if i < n - 1 and roman_map[s[i]] < roman_map[s[i + 1]]:
+                total -= roman_map[s[i]]  
             else:
-                total += prev_value
-
-            prev_value = current_value
-
-        total += prev_value  # Add the last character's value
-
+                total += roman_map[s[i]]  
+                
         return total
 
+
 import unittest
+
+
+import unittest
+from program2 import Solution
 
 class TestRomanToInt(unittest.TestCase):
     def setUp(self):
@@ -57,5 +58,4 @@ class TestRomanToInt(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
-
 
