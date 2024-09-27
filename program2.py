@@ -1,28 +1,21 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-        
-        roman_map = {
-            'I': 1,
-            'V': 5,
-            'X': 10,
-            'L': 50,
-            'C': 100,
-            'D': 500,
-            'M': 1000
+        translations = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000
         }
-        
-        total = 0
-        n = len(s)
-        
-        for i in range(n):
-            
-            if i < n - 1 and roman_map[s[i]] < roman_map[s[i + 1]]:
-                total -= roman_map[s[i]]  
-            else:
-                total += roman_map[s[i]]  
-                
-        return total
-
+        number = 0
+        s = s.replace("IV", "IIII").replace("IX", "VIIII")
+        s = s.replace("XL", "XXXX").replace("XC", "LXXXX")
+        s = s.replace("CD", "CCCC").replace("CM", "DCCCC")
+        for char in s:
+            number += translations[char]
+        return number
 
 import unittest
 
@@ -52,5 +45,5 @@ class TestRomanToInt(unittest.TestCase):
     def test_empty_string(self):
         self.assertEqual(self.solution.romanToInt(""), 0)
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
