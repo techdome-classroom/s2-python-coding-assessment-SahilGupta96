@@ -1,29 +1,28 @@
-class Solution:  
-    def romanToInt(self, s: str) -> int:  
-        roman_map = {  
-            'I': 1,  
-            'V': 5,  
-            'X': 10,  
-            'L': 50,  
-            'C': 100,  
-            'D': 500,  
-            'M': 1000  
-        }  
-        
-        total = 0  
-        n = len(s)  
-        
-        # Iterate through the string  
-        for i in range(n):  
-            # Check if the current value is less than the next value  
-            if i < n - 1 and roman_map[s[i]] < roman_map[s[i + 1]]:  
-                total -= roman_map[s[i]]  # Subtract if it's a subtraction case  
-            else:  
-                total += roman_map[s[i]]   # Add otherwise  
-                
-        return total  
 
+def romanToInt(self, s: str) -> int:
+        
+        roman_map = {
+            'I': 1,
+            'V': 5,
+            'X': 10,
+            'L': 50,
+            'C': 100,
+            'D': 500,
+            'M': 1000
+        }
+        
 
+        i = 0
+        num = 0
+        while i < len(s):
+            if i+1<len(s) and s[i:i+2] in roman_map:
+                num+=roman_map[s[i:i+2]]
+                i+=2
+            else:
+                #print(i)
+                num+=roman_map[s[i]]
+                i+=1
+        return num
 import unittest  
 
 class TestRomanToInt(unittest.TestCase):  
