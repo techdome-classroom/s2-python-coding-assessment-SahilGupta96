@@ -11,8 +11,9 @@ class Solution(object):
                     (c == ']' and stack[-1] != '['):
                     return False 
                 stack.pop() 
-        return not stack
-    
+        return not stack  
+
+
 import unittest
 
 class TestSolution(unittest.TestCase):
@@ -34,10 +35,8 @@ class TestSolution(unittest.TestCase):
     def test_mixed_parentheses(self):
         self.assertFalse(self.solution.isValid("(){"))
 
-if __name__ == '__main__':
+if _name_ == '_main_':
     unittest.main(argv=['first-arg-is-ignored'], exit=False)
-
-
 
 
 
